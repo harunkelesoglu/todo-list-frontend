@@ -1,0 +1,6 @@
+{
+    "BASE_URL":{
+        "development":"http://localhost:3000/api/v1",
+        "production":"https://getir-todolist-backend.herokuapp.com/api/v1"
+    }
+}

@@ -1,33 +1,239 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+:root {
+    --body-bkg: #F0EFE9;
+    --todo-bkg: #FFFFFF;
+    --text-color: #5F6271;
+    --text-unselected-color: #d7d7dc;
+    --control-color: #50E3A4;
   }
-  to {
-    transform: rotate(360deg);
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
+  
+  
+  body {
+    background-color: var(--body-bkg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    color: var(--text-color);
+  }
+  
+  .todo-container {
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.18);
+    height: 24em; /*490px*/
+    padding: 2em;
+    position: relative;
+    width: 380px;
+  }
+  
+  ul {
+    list-style: none;
+  }
+  
+  p {
+    margin: 0;
+  }
+  
+  .todo-container {
+    background-color: var(--todo-bkg);
+  }
+  
+  header {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  header .date {
+    display: flex;
+    justify-content: space-between;
+    width: 22%;
+  }
+  
+  header .date .day-number {
+    font-size: 2em;
+    font-weight: bold;
+    line-height: 1em;
+  }
+  
+  header .date .month-year-wrapper {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    font-size: .8em;
+  }
+  
+  header .date .month-year-wrapper .month {
+    font-weight: bold;
+  }
+  
+  header .today {
+    font-weight: 600;
+  }
+  
+  /*TODO BODY*/
+  main.todo-list {
+    margin-top: 1em;
+  }
+  
+  main.todo-list .tasks-container {
+    overflow-y: auto;
+    max-height: 260px; /*Scroll uando muestra el scroll*/
+  }
+  
+  main.todo-list .tasks-container li.task-container {
+    display: flex;
+    /* align-items: center;
+    justify-content: space-between;
+    padding: .7em; */
+    padding:.7em 0em .7em .7em;
+    border-bottom:1px solid var(--text-unselected-color);
+
+  }
+  
+  li.task-container.checked p {
+    color: var(--text-unselected-color);
+    text-decoration: line-through;
+    transition: all 500ms ease-in-out;
+  }
+  
+  li.task-container.checked input {
+    border-color: var(--control-color);
+    transition: all 500ms ease-in-out;
+  }
+  p.task {
+      width:90%;
+      margin-top:3px;
+  }
+  input[type="button"]{
+      background:transparent;
+      border:none;
+      margin-left: 10px;
+      color: #ca0202;
+      font-size:20px;
+      outline: none;
+      
+  }
+  
+  input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    
+    border: 3px solid var(--text-unselected-color);
+    border-radius: 50%;
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+    outline: none;
+  }
+  
+  button.add-task-btn {
+    background-color: var(--control-color);
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.18);
+    cursor: pointer;
+    height: 90px;
+    width: 90px;
+    z-index: 2;
+    position: absolute;
+    bottom: -53px;
+    left: calc(190px - 45px);
+    outline: none;
+    transition: 200ms ease-in-out;
+  }
+  
+  button.add-task-btn span {
+    font-size: 3em;
+    font-weight: bold;
+    color: #46BE8B;
+    font-family: none;
+  }
+  
+  button.add-task-btn:active {
+    transform: scale(.9);
+  }
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(255, 255, 255,0.5); /* Black w/ opacity */
+    /* -webkit-filter: blur(10px);
+    -moz-filter: blur(10px);
+    -o-filter: blur(10px);
+    -ms-filter: blur(10px);
+    filter: blur(10px); */
+  }
+
+
+.modal-content::before{
+    content: "";
+    position: absolute;
+    top:0px;
+    left:0px;
+    width:100vw;
+    height: 100vh;
+    background:transparent;
+    z-index: -1;
+    -webkit-filter: blur(100%);
+    -moz-filter: blur(100%);
+    -o-filter: blur(100%);
+    -ms-filter: blur(100%);
+    filter: blur(100%);
 }
+.new-todo{
+    width:100%;
+    padding:10px 15px;
+    margin-top:10px;
+    outline:none;
+    font-size:30px;
+    border-radius: 10px;
+    border:none;
+    border:1px solid var(--text-unselected-color);
+    color:var(--text-color);
+}
+.new-task {
+    margin-top:15px;
+    height: unset;
+}
+
+  /* Modal Content */
+  .modal-content {
+    background-color: transparent;
+    margin: auto;
+    border: 0px solid #888;
+    width: 380px;
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    background: transparent;
+    border:0;
+  }
+
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  ::placeholder{
+      color: #aaaaaa;
+  }
