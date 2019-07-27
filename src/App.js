@@ -107,8 +107,8 @@ class App extends Component {
             {tasks &&
                 tasks.map((item,index) => {
                   return <li className={`task-container ${item.status === 'completed'  && 'checked'}`} id={item._id} data-status={item.status}>
-                  <p className="task"> {item.name} </p>
                   <input type="radio" onClick={this.checkTask.bind(this, index)} />
+                  <p className="task"> {item.name} </p>
                   <input type="button" onClick={this.deleteTask.bind(this,index)} value="X" />
               </li>
                 })

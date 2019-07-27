@@ -132,6 +132,7 @@
     width: 25px;
     height: 25px;
     outline: none;
+    margin-right: 12px;
   }
   
   button.add-task-btn {
