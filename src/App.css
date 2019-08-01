@@ -102,7 +102,7 @@
   }
   
   li.task-container.checked input {
-    border-color: var(--control-color);
+    border-color: #ec467f;
     transition: all 500ms ease-in-out;
   }
   p.task {
@@ -136,7 +136,7 @@
   }
   
   button.add-task-btn {
-    background-color: var(--control-color);
+    background-color: #e00d55;
     border: none;
     border-radius: 50%;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.18);
@@ -154,7 +154,7 @@
   button.add-task-btn span {
     font-size: 3em;
     font-weight: bold;
-    color: #46BE8B;
+    color: #ad003b;
     font-family: none;
   }
   

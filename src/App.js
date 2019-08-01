@@ -3,7 +3,7 @@ import Service from './services/Service';
 import "./App.css"
 
 const months = ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'];
-const days = ['Pazar', 'Pazartesi', 'Salı', 'Çarşamba', 'Parşembe', 'Cuma', 'Cumartesi'];
+const days = ['Pazar', 'Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi'];
 const todoService = new Service();
 /*eslint no-unused-expressions: ["error", { "allowShortCircuit": true }]*/
 class App extends Component {
